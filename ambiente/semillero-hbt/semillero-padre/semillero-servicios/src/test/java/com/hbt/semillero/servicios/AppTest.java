@@ -3,6 +3,8 @@ package com.hbt.semillero.servicios;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.hbt.semillero.entidades.EstadoEnum;
+
 
 /**
  * Test unitario del semillero HBT
@@ -117,9 +119,69 @@ public class AppTest {
 	 }
 	 
 	 	
-	//TODO
+	
     /**
-     * Pendiente hacer un método que use el método ToString de la entidad COMIC
+     * Método que instancia Enum de la clase EstadoEnum
      */
-
+	 @Test
+	 public void pruebaInstancia(){
+		 
+		 EstadoEnum estado= EstadoEnum.ACTIVO;
+		 
+		 Assert.assertEquals(estado, EstadoEnum.ACTIVO);
+	 }
+	 
+	 /**
+	  * Método que devuelve un String con el nombre de la constante
+	  */
+	 @Test
+	 public void pruebadevuelveConstante(){
+		 
+		 EstadoEnum estado= EstadoEnum.ACTIVO;
+		 
+		 String resultado= estado.name();
+		 
+		 Assert.assertEquals(resultado, EstadoEnum.ACTIVO);
+		 
+	 }
+     
+	 /**
+	  * Método que devuelve un entero con la posición del enum 
+	  */	 
+	 @Test
+	 public void pruebadevuelveEntero(){
+		 
+		 EstadoEnum estado= EstadoEnum.ACTIVO;
+		 
+		 int posicion= estado.ordinal();
+		 
+		 Assert.assertEquals(estado, EstadoEnum.ACTIVO);
+	 }
+	 
+	 /**
+	  * Método que compara el enum con el parámetro 
+	  */
+	 @Test
+	 public void pruebacomparaEnum(){
+		 
+		 EstadoEnum estado= EstadoEnum.ACTIVO;
+		 
+		 int resultado= estado.compareTo(estado);
+		 
+		 Assert.assertEquals(resultado, EstadoEnum.ACTIVO);
+	 }
+	 
+	 /**
+	  * Método que devuelve un array con todos los enum
+	  */
+	 @Test
+	 
+	 public void pruebadevuelveArray(){
+		 
+		 EstadoEnum estado= EstadoEnum.ACTIVO;
+		 		 
+		 Assert.assertEquals(estado.values(),EstadoEnum.values());
+		 
+	 }
+	 
 }

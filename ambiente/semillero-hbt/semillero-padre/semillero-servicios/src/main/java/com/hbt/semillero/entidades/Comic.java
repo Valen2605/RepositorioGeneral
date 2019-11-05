@@ -20,12 +20,12 @@ import javax.persistence.Table;
 /**
  * <b>Descripción:<b> Clase que determina
  * <b>Caso de Uso:<b> 
- * @author SEBASTIAN
- * @version 
+ * @author Valentina
+ * @version 1
  */
 
 @Entity
-@Table(name = "COMICS")
+@Table(name = "COMIC")
 public class Comic implements Serializable {
 
 	/**
@@ -34,18 +34,18 @@ public class Comic implements Serializable {
 	private static final long serialVersionUID = 4322034079745146450L;
 	
 	
-	private String id;
-    private String nombre;
-    private String editorial;
-    private String tematicaEnum;
-    private String coleccion;
-    private Integer numeroPaginas;
-    private BigDecimal precio;
-    private String autores;
-    private Boolean color;
-    private LocalDate fechaVenta;
-    private String estadoEnum;
-    private Long cantidad;
+	private String id; // Identificador unico del comic
+    private String nombre; // Nombre del comic
+    private String editorial; // Indica nombre del editorial del comic
+    private String tematicaEnum; // Indica que tipo de tematica trata el comic
+    private String coleccion; // Nombre de la coleccion del comic
+    private Integer numeroPaginas; // Indica el numero de paginas del comic
+    private BigDecimal precio; // Precio del comic
+    private String autores; //Autores del comic
+    private Boolean color; // Es para indica si el comic es a color o no
+    private LocalDate fechaVenta; // Fecha de venta del comic
+    private String estadoEnum; // muestra el estado en el que esta el comic
+    private Long cantidad; // muestra la cantidad
     
     
     
@@ -57,7 +57,7 @@ public class Comic implements Serializable {
     @SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
     @Column(name="SCID")
-	public String getId() {
+	public String getId() { //Metodo encargado de retornar el valor del atributo id
 		return id;
 	}
 	/**
@@ -209,6 +209,7 @@ public class Comic implements Serializable {
 	 * @return El estadoEnum asociado a la clase
 	 */
 	@Column(name="SCESTADO")
+	@Enumerated(value = EnumType.STRING)// para decirle que recibo un string del enum
 	public String getEstadoEnum() {
 		return estadoEnum;
 	}
@@ -239,7 +240,7 @@ public class Comic implements Serializable {
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode() {
+	public int hashCode() { 
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((autores == null) ? 0 : autores.hashCode());

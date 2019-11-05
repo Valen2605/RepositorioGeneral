@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.hbt.semillero.entidades.EstadoEnum;
 import com.hbt.semillero.entidades.TematicaEnum;
 
 
@@ -12,8 +13,8 @@ import com.hbt.semillero.entidades.TematicaEnum;
  * 
  * <b>Descripción:<b> Clase que determina
  * <b>Caso de Uso:<b> 
- * @author SEBASTIAN
- * @version
+ * @author Valentina
+ * @version 1
  */
 public class ComicDTO implements Serializable{
 	
@@ -39,26 +40,27 @@ public class ComicDTO implements Serializable{
 	
 	private BigDecimal precio; // Precio del comic
 	
+	private String autores; //Autores del comic
+	
 	private Boolean color; // Es para indica si el comic es a color o no
 	
-	private LocalDate fechaVenta; // Fecha de venta del comic
-    
-	private String estado; // muestra el estado en el que esta el comic
+	private LocalDate fechaVenta; // Fecha de venta del comic	
+	    
+	private EstadoEnum estadoEnum; // muestra el estado en el que esta el comic
 	
 	//TODO 
-	
 	private Long cantidad; // muestra la cantidad
 	 
 	
-	/*Constructor de la clase */
-	
-	public ComicDTO(){
-		
-		
-		
+	/**
+	 * Constructor de la clase.
+	 */
+	public ComicDTO() {
+		super();
 	}
 
-
+	
+	
 	/**
 	 * Constructor de la clase.
 	 * @param id
@@ -68,13 +70,15 @@ public class ComicDTO implements Serializable{
 	 * @param coleccion
 	 * @param numeroPaginas
 	 * @param precio
+	 * @param autores
 	 * @param color
 	 * @param fechaVenta
 	 * @param estado
 	 * @param cantidad
 	 */
+	
 	public ComicDTO(String id, String nombre, String editorial, TematicaEnum tematica, String coleccion,
-			Integer numeroPaginas, BigDecimal precio, Boolean color, LocalDate fechaVenta, String estado,
+			Integer numeroPaginas, BigDecimal precio, String autores,Boolean color, LocalDate fechaVenta, EstadoEnum estado,
 			Long cantidad) {
 		super();
 		this.id = id;
@@ -84,9 +88,10 @@ public class ComicDTO implements Serializable{
 		this.coleccion = coleccion;
 		this.numeroPaginas = numeroPaginas;
 		this.precio = precio;
+		this.autores= autores;
 		this.color = color;
 		this.fechaVenta = fechaVenta;
-		this.estado = estado;
+		this.estadoEnum = estado;
 		this.cantidad = cantidad;
 	}
 
@@ -229,6 +234,22 @@ public class ComicDTO implements Serializable{
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
+    
+	/**
+	 * Metodo encargado de retornar el valor del atributo autores
+	 * @return El autores asociado a la clase
+	 */
+	public String getAutores() {
+		return autores;
+	}
+
+	/**
+	 * Metodo encargado de modificar el valor del atributo autores
+	 * @param autores El nuevo autores a modificar.
+	 */
+	public void setAutores(String autores) {
+		this.autores = autores;
+	}
 
 
 	/**
@@ -271,8 +292,8 @@ public class ComicDTO implements Serializable{
 	 * Metodo encargado de retornar el valor del atributo estado
 	 * @return El estado asociado a la clase
 	 */
-	public String getEstado() {
-		return estado;
+	public EstadoEnum getEstadoEnum() {
+		return estadoEnum;
 	}
 
 
@@ -280,8 +301,8 @@ public class ComicDTO implements Serializable{
 	 * Metodo encargado de modificar el valor del atributo estado
 	 * @param estado El nuevo estado a modificar.
 	 */
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstadoEnum(EstadoEnum estadoEnum) {
+		this.estadoEnum = estadoEnum;
 	}
 
 
