@@ -33,214 +33,277 @@ public class Comic implements Serializable {
 	 */
 	private static final long serialVersionUID = 4322034079745146450L;
 	
-	
-	private String id; // Identificador unico del comic
-    private String nombre; // Nombre del comic
-    private String editorial; // Indica nombre del editorial del comic
-    private String tematicaEnum; // Indica que tipo de tematica trata el comic
-    private String coleccion; // Nombre de la coleccion del comic
-    private Integer numeroPaginas; // Indica el numero de paginas del comic
-    private BigDecimal precio; // Precio del comic
-    private String autores; //Autores del comic
-    private Boolean color; // Es para indica si el comic es a color o no
-    private LocalDate fechaVenta; // Fecha de venta del comic
-    private String estadoEnum; // muestra el estado en el que esta el comic
-    private Long cantidad; // muestra la cantidad
-    
-    
-    
+	@Id
+	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
+	@Column(name = "SCID")
+	private String id;
+
+	@Column(name = "SCNOMBRE")
+	private String nombre;
+
+	@Column(name = "SCEDITORIAL")
+	private String editorial;
+
+	@Column(name = "SCTEMATICA")
+	private String tematicaEnum;
+
+	@Column(name = "SCCOLECCION")
+	private String coleccion;
+
+	@Column(name = "SCNUMEROPAGINAS")
+	private Integer numeroPaginas;
+
+	@Column(name = "SCPRECIO")
+	private BigDecimal precio;
+
+	@Column(name = "SCAUTORES")
+	private String autores;
+
+	@Column(name = "SCCOLOR")
+	private Boolean color;
+
+	@Column(name = "SCFECHA_VENTA")
+	private LocalDate fechaVenta;
+
+	@Column(name = "SCESTADO")
+	private String estadoEnum;
+
+	@Column(name = "SCCANTIDAD")
+	private Long cantidad;
+
+	/**
+	 * Constructor de la clase.
+	 */
+	public Comic() {
+	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo id
+	 * 
 	 * @return El id asociado a la clase
 	 */
-    @Id
-    @SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
-    @Column(name="SCID")
-	public String getId() { //Metodo encargado de retornar el valor del atributo id
+
+	public String getId() {
 		return id;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo id
+	 * 
 	 * @param id El nuevo id a modificar.
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo nombre
+	 * 
 	 * @return El nombre asociado a la clase
 	 */
-	@Column(name="SCNOMBRE")
 	public String getNombre() {
 		return nombre;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo nombre
+	 * 
 	 * @param nombre El nuevo nombre a modificar.
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo editorial
+	 * 
 	 * @return El editorial asociado a la clase
 	 */
-	@Column(name="SCEDITORIAL")
 	public String getEditorial() {
 		return editorial;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo editorial
+	 * 
 	 * @param editorial El nuevo editorial a modificar.
 	 */
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo tematicaEnum
+	 * 
 	 * @return El tematicaEnum asociado a la clase
 	 */
 	
-	@Column(name="SCTEMATICA")
-	@Enumerated(value = EnumType.STRING)// para decirle que recibo un string del enum
+	@Enumerated(value = EnumType.STRING)
 	public String getTematicaEnum() {
 		return tematicaEnum;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo tematicaEnum
+	 * 
 	 * @param tematicaEnum El nuevo tematicaEnum a modificar.
 	 */
 	public void setTematicaEnum(String tematicaEnum) {
 		this.tematicaEnum = tematicaEnum;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo coleccion
+	 * 
 	 * @return El coleccion asociado a la clase
 	 */
-	@Column(name="COLECCION")
 	public String getColeccion() {
 		return coleccion;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo coleccion
+	 * 
 	 * @param coleccion El nuevo coleccion a modificar.
 	 */
 	public void setColeccion(String coleccion) {
 		this.coleccion = coleccion;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo numeroPaginas
+	 * 
 	 * @return El numeroPaginas asociado a la clase
 	 */
-	@Column(name="SCNUMEROPAGINAS")
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo numeroPaginas
+	 * 
 	 * @param numeroPaginas El nuevo numeroPaginas a modificar.
 	 */
 	public void setNumeroPaginas(Integer numeroPaginas) {
 		this.numeroPaginas = numeroPaginas;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo precio
+	 * 
 	 * @return El precio asociado a la clase
 	 */
-	@Column(name="SCPRECIO")
 	public BigDecimal getPrecio() {
 		return precio;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo precio
+	 * 
 	 * @param precio El nuevo precio a modificar.
 	 */
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo autores
+	 * 
 	 * @return El autores asociado a la clase
 	 */
-	@Column(name="SCAUTORES")
 	public String getAutores() {
 		return autores;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo autores
+	 * 
 	 * @param autores El nuevo autores a modificar.
 	 */
 	public void setAutores(String autores) {
 		this.autores = autores;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo color
+	 * 
 	 * @return El color asociado a la clase
 	 */
-	@Column(name="SCCOLOR")
 	public Boolean getColor() {
 		return color;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo color
+	 * 
 	 * @param color El nuevo color a modificar.
 	 */
 	public void setColor(Boolean color) {
 		this.color = color;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo fechaVenta
+	 * 
 	 * @return El fechaVenta asociado a la clase
 	 */
-	@Column(name="SCFECHA_VENTA")
 	public LocalDate getFechaVenta() {
 		return fechaVenta;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo fechaVenta
+	 * 
 	 * @param fechaVenta El nuevo fechaVenta a modificar.
 	 */
 	public void setFechaVenta(LocalDate fechaVenta) {
 		this.fechaVenta = fechaVenta;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo estadoEnum
+	 * 
 	 * @return El estadoEnum asociado a la clase
 	 */
-	@Column(name="SCESTADO")
-	@Enumerated(value = EnumType.STRING)// para decirle que recibo un string del enum
+	@Enumerated(value = EnumType.STRING)
 	public String getEstadoEnum() {
 		return estadoEnum;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo estadoEnum
+	 * 
 	 * @param estadoEnum El nuevo estadoEnum a modificar.
 	 */
 	public void setEstadoEnum(String estadoEnum) {
 		this.estadoEnum = estadoEnum;
 	}
+
 	/**
 	 * Metodo encargado de retornar el valor del atributo cantidad
+	 * 
 	 * @return El cantidad asociado a la clase
 	 */
-	@Column(name="SCCANTIDAD")
 	public Long getCantidad() {
 		return cantidad;
 	}
+
 	/**
 	 * Metodo encargado de modificar el valor del atributo cantidad
+	 * 
 	 * @param cantidad El nuevo cantidad a modificar.
 	 */
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
 	
+
 	/** 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode() { 
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((autores == null) ? 0 : autores.hashCode());
@@ -257,90 +320,144 @@ public class Comic implements Serializable {
 		result = prime * result + ((tematicaEnum == null) ? 0 : tematicaEnum.hashCode());
 		return result;
 	}
+
 	/** 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Comic other = (Comic) obj;
 		if (autores == null) {
-			if (other.autores != null)
+			if (other.autores != null) {
 				return false;
-		} else if (!autores.equals(other.autores))
+			}
+		} else if (!autores.equals(other.autores)) {
 			return false;
+		}
 		if (cantidad == null) {
-			if (other.cantidad != null)
+			if (other.cantidad != null) {
 				return false;
-		} else if (!cantidad.equals(other.cantidad))
+			}
+		} else if (!cantidad.equals(other.cantidad)) {
 			return false;
+		}
 		if (coleccion == null) {
-			if (other.coleccion != null)
+			if (other.coleccion != null) {
 				return false;
-		} else if (!coleccion.equals(other.coleccion))
+			}
+		} else if (!coleccion.equals(other.coleccion)) {
 			return false;
+		}
 		if (color == null) {
-			if (other.color != null)
+			if (other.color != null) {
 				return false;
-		} else if (!color.equals(other.color))
+			}
+		} else if (!color.equals(other.color)) {
 			return false;
+		}
 		if (editorial == null) {
-			if (other.editorial != null)
+			if (other.editorial != null) {
 				return false;
-		} else if (!editorial.equals(other.editorial))
+			}
+		} else if (!editorial.equals(other.editorial)) {
 			return false;
+		}
 		if (estadoEnum == null) {
-			if (other.estadoEnum != null)
+			if (other.estadoEnum != null) {
 				return false;
-		} else if (!estadoEnum.equals(other.estadoEnum))
+			}
+		} else if (!estadoEnum.equals(other.estadoEnum)) {
 			return false;
+		}
 		if (fechaVenta == null) {
-			if (other.fechaVenta != null)
+			if (other.fechaVenta != null) {
 				return false;
-		} else if (!fechaVenta.equals(other.fechaVenta))
+			}
+		} else if (!fechaVenta.equals(other.fechaVenta)) {
 			return false;
+		}
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
+		}
 		if (nombre == null) {
-			if (other.nombre != null)
+			if (other.nombre != null) {
 				return false;
-		} else if (!nombre.equals(other.nombre))
+			}
+		} else if (!nombre.equals(other.nombre)) {
 			return false;
+		}
 		if (numeroPaginas == null) {
-			if (other.numeroPaginas != null)
+			if (other.numeroPaginas != null) {
 				return false;
-		} else if (!numeroPaginas.equals(other.numeroPaginas))
+			}
+		} else if (!numeroPaginas.equals(other.numeroPaginas)) {
 			return false;
+		}
 		if (precio == null) {
-			if (other.precio != null)
+			if (other.precio != null) {
 				return false;
-		} else if (!precio.equals(other.precio))
+			}
+		} else if (!precio.equals(other.precio)) {
 			return false;
+		}
 		if (tematicaEnum == null) {
-			if (other.tematicaEnum != null)
+			if (other.tematicaEnum != null) {
 				return false;
-		} else if (!tematicaEnum.equals(other.tematicaEnum))
+			}
+		} else if (!tematicaEnum.equals(other.tematicaEnum)) {
 			return false;
+		}
 		return true;
 	}
+
 	/** 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematicaEnum=" + tematicaEnum
-				+ ", coleccion=" + coleccion + ", numeroPaginas=" + numeroPaginas + ", precio=" + precio + ", autores="
-				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estadoEnum=" + estadoEnum
-				+ ", cantidad=" + cantidad + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Comic [id=");
+		builder.append(id);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", editorial=");
+		builder.append(editorial);
+		builder.append(", tematicaEnum=");
+		builder.append(tematicaEnum);
+		builder.append(", coleccion=");
+		builder.append(coleccion);
+		builder.append(", numeroPaginas=");
+		builder.append(numeroPaginas);
+		builder.append(", precio=");
+		builder.append(precio);
+		builder.append(", autores=");
+		builder.append(autores);
+		builder.append(", color=");
+		builder.append(color);
+		builder.append(", fechaVenta=");
+		builder.append(fechaVenta);
+		builder.append(", estadoEnum=");
+		builder.append(estadoEnum);
+		builder.append(", cantidad=");
+		builder.append(cantidad);
+		builder.append("]");
+		return builder.toString();
 	}
-
+	
+	
+	
 	
 }

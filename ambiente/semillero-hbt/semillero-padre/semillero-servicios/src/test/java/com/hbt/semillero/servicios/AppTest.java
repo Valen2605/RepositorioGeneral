@@ -1,9 +1,15 @@
 package com.hbt.semillero.servicios;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.hbt.semillero.dto.ComicDTO;
 import com.hbt.semillero.entidades.EstadoEnum;
+import com.hbt.semillero.entidades.TematicaEnum;
+import com.hbt.semillero.pojo.GestionarComicPOJO;
 
 
 /**
@@ -18,7 +24,7 @@ public class AppTest {
 	 * Metodo que permite validar si dada la suma de dos numero el resultado es el
 	 * correcto
 	 */
-	@Test
+	@Test(enabled=false)
 	public void primeraPU() {
 		Long resultadoEsperado = 2159L;
 		Long sumando1 = 1500L;
@@ -48,7 +54,7 @@ public class AppTest {
 	/*
 	 * Método que valida si cadena se ha retornado alrevés correctamente
 	 */
-	 @Test
+	@Test(enabled=false)
 	  public void pruebaInversionCadena(){
 		  
 		  String resultadoEsperado= "anitnelav";
@@ -61,7 +67,7 @@ public class AppTest {
 	 /*
 	  * Método que valida que método no recibe parámetros
 	  */
-	 @Test
+	@Test(enabled=false)
 	 public void pruebaRecibeParametros(){
 		 
 		 String resultadoEsperado="";
@@ -76,7 +82,7 @@ public class AppTest {
 	  * Método que valida si la cadena retornada no es la esperada
 	  */
 	  
-	 @Test
+	@Test(enabled=false)
 	  public void pruebaSonIguales(){
 		  
 		     String resultadoEsperado="agustin";
@@ -90,7 +96,7 @@ public class AppTest {
 	 /*
 	  * Método que valida que la cantidad de letras sea la misma
 	  */
-	 @Test
+	@Test(enabled=false)
 	 public void pruebaCantidadLetras() {
 		 
 		 String resultadoEsperado="valentina";
@@ -108,7 +114,7 @@ public class AppTest {
 	 /*
 	  * Método que valida que si se hayan ingresado letras
 	  */
-	 @Test
+	@Test(enabled=false)
 	   public void pruebaSonLetras() {
 		 
          String resultadoEsperado="123456";
@@ -123,7 +129,7 @@ public class AppTest {
     /**
      * Método que instancia Enum de la clase EstadoEnum
      */
-	 @Test
+	@Test(enabled=false)
 	 public void pruebaInstancia(){
 		 
 		 EstadoEnum estado= EstadoEnum.ACTIVO;
@@ -134,7 +140,7 @@ public class AppTest {
 	 /**
 	  * Método que devuelve un String con el nombre de la constante
 	  */
-	 @Test
+	@Test(enabled=false)
 	 public void pruebadevuelveConstante(){
 		 
 		 EstadoEnum estado= EstadoEnum.ACTIVO;
@@ -148,7 +154,7 @@ public class AppTest {
 	 /**
 	  * Método que devuelve un entero con la posición del enum 
 	  */	 
-	 @Test
+	@Test(enabled=false)
 	 public void pruebadevuelveEntero(){
 		 
 		 EstadoEnum estado= EstadoEnum.ACTIVO;
@@ -161,7 +167,7 @@ public class AppTest {
 	 /**
 	  * Método que compara el enum con el parámetro 
 	  */
-	 @Test
+	@Test(enabled=false)
 	 public void pruebacomparaEnum(){
 		 
 		 EstadoEnum estado= EstadoEnum.ACTIVO;
@@ -174,8 +180,7 @@ public class AppTest {
 	 /**
 	  * Método que devuelve un array con todos los enum
 	  */
-	 @Test
-	 
+	@Test(enabled=false)	 
 	 public void pruebadevuelveArray(){
 		 
 		 EstadoEnum estado= EstadoEnum.ACTIVO;
@@ -183,5 +188,74 @@ public class AppTest {
 		 Assert.assertEquals(estado.values(),EstadoEnum.values());
 		 
 	 }
+	 /**
+	  * Método que valida que la lista se pueda llenar
+	  */
+	@Test(enabled = false)
+	public void crearComicDTOTest() {
+		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
+		gestionarComicPOJO.crearComicDTO();
+		Assert.assertNotNull(gestionarComicPOJO.getListaComics());
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() != 0);
+		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
+	}
+
+	@Test (enabled = false)
+	public void crearComicDTOTest1() {
+		GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
+
+		ComicDTO comicDTO = gestionarComicPOJO.crearComicDTO("101", "Captain America Corps 1-5 USA", "Panini Comics",
+				TematicaEnum.FANTASTICO.name(), "BIBLIOTECA MARVEL", 128, new BigDecimal(5000),
+				"Phillippe Briones, Roger Stern", Boolean.FALSE, LocalDate.now(), "ACTIVO", 5L);
+
+		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
+
+		Assert.assertNotNull(gestionarComicPOJO.getListaComics());
+		Assert.assertTrue(!gestionarComicPOJO.getListaComics().isEmpty());
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 1);
+
+		comicDTO = new ComicDTO();
+
+		comicDTO.setId("100");
+		comicDTO.setNombre("Dragon ball Yamcha");
+		comicDTO.setEditorial("Planeta Cómic");
+		comicDTO.setTematica(TematicaEnum.AVENTURAS.name());
+		comicDTO.setColeccion("Manga Shonen");
+		comicDTO.setNumeroPaginas(100);
+		comicDTO.setPrecio(new BigDecimal(2100));
+		comicDTO.setAutores("Dragon Garow Lee");
+		comicDTO.setColor(Boolean.TRUE);
+		comicDTO.setFechaVenta(LocalDate.now());
+		comicDTO.setEstado("ACTIVO");
+		comicDTO.setCantidad(20L);
+
+		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
+
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() > 1);
+
+		comicDTO = new ComicDTO();
+
+		comicDTO.setId("100");
+		comicDTO.setNombre("Dragon ball Yamcha");
+		comicDTO.setEditorial("Planeta Cómic");
+		comicDTO.setTematica(TematicaEnum.AVENTURAS.name());
+		comicDTO.setColeccion("Manga Shonen");
+		comicDTO.setNumeroPaginas(100);
+		comicDTO.setPrecio(new BigDecimal(2100));
+		comicDTO.setAutores("Dragon Garow Lee");
+		comicDTO.setColor(Boolean.TRUE);
+		comicDTO.setFechaVenta(LocalDate.now());
+		comicDTO.setEstado("ACTIVO");
+		comicDTO.setCantidad(20L);
+
+		gestionarComicPOJO.agregarComicDTOLista(comicDTO);
+
+		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 3);
+	}
+
+	// TODO
+		/**
+		 * Pediente hacer un método que use el método ToString de la entidad COMIC
+		 */
 	 
 }

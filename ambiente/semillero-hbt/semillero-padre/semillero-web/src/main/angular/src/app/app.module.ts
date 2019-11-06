@@ -12,10 +12,12 @@ import { MenuComponent } from './semillero/componentes/menu/menu-component';
 import { BienvenidaComponent } from './semillero/componentes/home/bienvenida-component';
 import { DatosPersonaComponent } from './semillero/componentes/persona/datospersona-component';
 
+
+
 // DTOs
 export { ComicDTO } from './semillero/dto/comic.dto';
 export { ResultadoDTO } from './semillero/dto/resultado.dto';
-
+export { EjercicioComicComponent} from './semillero/componentes/ejercicioComic/ejercicio-comic-component';
 @NgModule({
   declarations: [
     AppComponent,
