@@ -18,7 +18,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * <b>Descripción:<b> Clase que determina
+ * <b>Descripción:<b> Clase que determina la entidad que permite representar
+ * tabla "DB_SEMILLERO"."COMIC"
  * <b>Caso de Uso:<b> 
  * @author Valentina
  * @version 1
@@ -29,53 +30,30 @@ import javax.persistence.Table;
 public class Comic implements Serializable {
 
 	/**
-	 * Numero unico que representa la clase 
+	 * Serializar es pasar un Objeto a un array de bytes y viceversa. Atributo que
+	 * determina serialVersionUID es el id único que identifica una clase cuando lo
+	 * serializamos. ;ediante este id podemos identificar el objeto convertido en un
+	 * array de bytes.
 	 */
-	private static final long serialVersionUID = 4322034079745146450L;
-	
-	@Id
-	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
-	@Column(name = "SCID")
-	private String id;
-
-	@Column(name = "SCNOMBRE")
+	private static final long serialVersionUID = 1L;
+	private Long id;
 	private String nombre;
-
-	@Column(name = "SCEDITORIAL")
 	private String editorial;
-
-	@Column(name = "SCTEMATICA")
-	private String tematicaEnum;
-
-	@Column(name = "SCCOLECCION")
+	private TematicaEnum tematicaEnum;
 	private String coleccion;
-
-	@Column(name = "SCNUMEROPAGINAS")
 	private Integer numeroPaginas;
-
-	@Column(name = "SCPRECIO")
 	private BigDecimal precio;
-
-	@Column(name = "SCAUTORES")
 	private String autores;
-
-	@Column(name = "SCCOLOR")
 	private Boolean color;
-
-	@Column(name = "SCFECHA_VENTA")
 	private LocalDate fechaVenta;
-
-	@Column(name = "SCESTADO")
-	private String estadoEnum;
-
-	@Column(name = "SCCANTIDAD")
+	private EstadoEnum estadoEnum;
 	private Long cantidad;
 
 	/**
 	 * Constructor de la clase.
 	 */
 	public Comic() {
+
 	}
 
 	/**
@@ -83,8 +61,11 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El id asociado a la clase
 	 */
-
-	public String getId() {
+	@Id
+	@SequenceGenerator(allocationSize = 1, name = "COMIC_SCID_GENERATOR", sequenceName = "SEQ_COMIC")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMIC_SCID_GENERATOR")
+	@Column(name = "SCID")
+	public Long getId() {
 		return id;
 	}
 
@@ -93,7 +74,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @param id El nuevo id a modificar.
 	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -102,6 +83,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El nombre asociado a la clase
 	 */
+	@Column(name = "SCNOMBRE")
 	public String getNombre() {
 		return nombre;
 	}
@@ -120,6 +102,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El editorial asociado a la clase
 	 */
+	@Column(name = "SCEDITORIAL")
 	public String getEditorial() {
 		return editorial;
 	}
@@ -134,22 +117,22 @@ public class Comic implements Serializable {
 	}
 
 	/**
-	 * Metodo encargado de retornar el valor del atributo tematicaEnum
+	 * Metodo encargado de retornar el valor del atributo tematica
 	 * 
-	 * @return El tematicaEnum asociado a la clase
+	 * @return El tematica asociado a la clase
 	 */
-	
+	@Column(name = "SCTEMATICA")
 	@Enumerated(value = EnumType.STRING)
-	public String getTematicaEnum() {
+	public TematicaEnum getTematicaEnum() {
 		return tematicaEnum;
 	}
 
 	/**
-	 * Metodo encargado de modificar el valor del atributo tematicaEnum
+	 * Metodo encargado de modificar el valor del atributo tematica
 	 * 
-	 * @param tematicaEnum El nuevo tematicaEnum a modificar.
+	 * @param tematica El nuevo tematica a modificar.
 	 */
-	public void setTematicaEnum(String tematicaEnum) {
+	public void setTematicaEnum(TematicaEnum tematicaEnum) {
 		this.tematicaEnum = tematicaEnum;
 	}
 
@@ -158,6 +141,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El coleccion asociado a la clase
 	 */
+	@Column(name = "SCCOLECCION")
 	public String getColeccion() {
 		return coleccion;
 	}
@@ -176,6 +160,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El numeroPaginas asociado a la clase
 	 */
+	@Column(name = "SCNUMEROPAGINAS")
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;
 	}
@@ -194,6 +179,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El precio asociado a la clase
 	 */
+	@Column(name = "SCPRECIO")
 	public BigDecimal getPrecio() {
 		return precio;
 	}
@@ -212,6 +198,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El autores asociado a la clase
 	 */
+	@Column(name = "SCAUTORES")
 	public String getAutores() {
 		return autores;
 	}
@@ -230,6 +217,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El color asociado a la clase
 	 */
+	@Column(name = "SCCOLOR")
 	public Boolean getColor() {
 		return color;
 	}
@@ -248,6 +236,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El fechaVenta asociado a la clase
 	 */
+	@Column(name = "SCFECHA_VENTA")
 	public LocalDate getFechaVenta() {
 		return fechaVenta;
 	}
@@ -262,21 +251,22 @@ public class Comic implements Serializable {
 	}
 
 	/**
-	 * Metodo encargado de retornar el valor del atributo estadoEnum
+	 * Metodo encargado de retornar el valor del atributo estado
 	 * 
-	 * @return El estadoEnum asociado a la clase
+	 * @return El estado asociado a la clase
 	 */
+	@Column(name = "SCESTADO")
 	@Enumerated(value = EnumType.STRING)
-	public String getEstadoEnum() {
+	public EstadoEnum getEstadoEnum() {
 		return estadoEnum;
 	}
 
 	/**
-	 * Metodo encargado de modificar el valor del atributo estadoEnum
+	 * Metodo encargado de modificar el valor del atributo estado
 	 * 
-	 * @param estadoEnum El nuevo estadoEnum a modificar.
+	 * @param estado El nuevo estado a modificar.
 	 */
-	public void setEstadoEnum(String estadoEnum) {
+	public void setEstadoEnum(EstadoEnum estadoEnum) {
 		this.estadoEnum = estadoEnum;
 	}
 
@@ -285,6 +275,7 @@ public class Comic implements Serializable {
 	 * 
 	 * @return El cantidad asociado a la clase
 	 */
+	@Column(name = "SCCANTIDAD")
 	public Long getCantidad() {
 		return cantidad;
 	}
@@ -297,10 +288,25 @@ public class Comic implements Serializable {
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
-	
 
-	/** 
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * @see java.lang.Object#toString() Metodo que permite asociar al objeto un
+	 *      texto representativo
+	 */
+	@Override
+	public String toString() {
+		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematica=" + tematicaEnum
+				+ ", coleccion=" + coleccion + ", numeroPaginas=" + numeroPaginas + ", precio=" + precio + ", autores="
+				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estado=" + estadoEnum + ", cantidad="
+				+ cantidad + "]";
+	}
+
+	/**
+	 * @see java.lang.Object#hashCode() Este método viene a complementar al método
+	 *      equals y sirve para comparar objetos de una forma más rápida en
+	 *      estructuras Hash ya que únicamente nos devuelve un número entero. Cuando
+	 *      Java compara dos objetos en estructuras de tipo hash (HashMap, HashSet
+	 *      etc) primero invoca al método hashcode y luego el equals
 	 */
 	@Override
 	public int hashCode() {
@@ -321,143 +327,80 @@ public class Comic implements Serializable {
 		return result;
 	}
 
-	/** 
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * @see java.lang.Object#equals(java.lang.Object) Metodo que permite comparar
+	 *      objetos
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Comic other = (Comic) obj;
 		if (autores == null) {
-			if (other.autores != null) {
+			if (other.autores != null)
 				return false;
-			}
-		} else if (!autores.equals(other.autores)) {
+		} else if (!autores.equals(other.autores))
 			return false;
-		}
 		if (cantidad == null) {
-			if (other.cantidad != null) {
+			if (other.cantidad != null)
 				return false;
-			}
-		} else if (!cantidad.equals(other.cantidad)) {
+		} else if (!cantidad.equals(other.cantidad))
 			return false;
-		}
 		if (coleccion == null) {
-			if (other.coleccion != null) {
+			if (other.coleccion != null)
 				return false;
-			}
-		} else if (!coleccion.equals(other.coleccion)) {
+		} else if (!coleccion.equals(other.coleccion))
 			return false;
-		}
 		if (color == null) {
-			if (other.color != null) {
+			if (other.color != null)
 				return false;
-			}
-		} else if (!color.equals(other.color)) {
+		} else if (!color.equals(other.color))
 			return false;
-		}
 		if (editorial == null) {
-			if (other.editorial != null) {
+			if (other.editorial != null)
 				return false;
-			}
-		} else if (!editorial.equals(other.editorial)) {
+		} else if (!editorial.equals(other.editorial))
 			return false;
-		}
 		if (estadoEnum == null) {
-			if (other.estadoEnum != null) {
+			if (other.estadoEnum != null)
 				return false;
-			}
-		} else if (!estadoEnum.equals(other.estadoEnum)) {
+		} else if (!estadoEnum.equals(other.estadoEnum))
 			return false;
-		}
 		if (fechaVenta == null) {
-			if (other.fechaVenta != null) {
+			if (other.fechaVenta != null)
 				return false;
-			}
-		} else if (!fechaVenta.equals(other.fechaVenta)) {
+		} else if (!fechaVenta.equals(other.fechaVenta))
 			return false;
-		}
 		if (id == null) {
-			if (other.id != null) {
+			if (other.id != null)
 				return false;
-			}
-		} else if (!id.equals(other.id)) {
+		} else if (!id.equals(other.id))
 			return false;
-		}
 		if (nombre == null) {
-			if (other.nombre != null) {
+			if (other.nombre != null)
 				return false;
-			}
-		} else if (!nombre.equals(other.nombre)) {
+		} else if (!nombre.equals(other.nombre))
 			return false;
-		}
 		if (numeroPaginas == null) {
-			if (other.numeroPaginas != null) {
+			if (other.numeroPaginas != null)
 				return false;
-			}
-		} else if (!numeroPaginas.equals(other.numeroPaginas)) {
+		} else if (!numeroPaginas.equals(other.numeroPaginas))
 			return false;
-		}
 		if (precio == null) {
-			if (other.precio != null) {
+			if (other.precio != null)
 				return false;
-			}
-		} else if (!precio.equals(other.precio)) {
+		} else if (!precio.equals(other.precio))
 			return false;
-		}
 		if (tematicaEnum == null) {
-			if (other.tematicaEnum != null) {
+			if (other.tematicaEnum != null)
 				return false;
-			}
-		} else if (!tematicaEnum.equals(other.tematicaEnum)) {
+		} else if (!tematicaEnum.equals(other.tematicaEnum))
 			return false;
-		}
 		return true;
 	}
 
-	/** 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Comic [id=");
-		builder.append(id);
-		builder.append(", nombre=");
-		builder.append(nombre);
-		builder.append(", editorial=");
-		builder.append(editorial);
-		builder.append(", tematicaEnum=");
-		builder.append(tematicaEnum);
-		builder.append(", coleccion=");
-		builder.append(coleccion);
-		builder.append(", numeroPaginas=");
-		builder.append(numeroPaginas);
-		builder.append(", precio=");
-		builder.append(precio);
-		builder.append(", autores=");
-		builder.append(autores);
-		builder.append(", color=");
-		builder.append(color);
-		builder.append(", fechaVenta=");
-		builder.append(fechaVenta);
-		builder.append(", estadoEnum=");
-		builder.append(estadoEnum);
-		builder.append(", cantidad=");
-		builder.append(cantidad);
-		builder.append("]");
-		return builder.toString();
-	}
-	
-	
-	
-	
 }

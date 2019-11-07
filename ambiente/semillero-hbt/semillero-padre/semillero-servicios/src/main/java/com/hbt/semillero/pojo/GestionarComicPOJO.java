@@ -25,7 +25,8 @@ public class GestionarComicPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de crear un comic DTO con parametros 
+	 * Metodo que crea un comic DTO con parametros 
+	 * @author Valentina
 	 * 
 	 * @param id
 	 * @param nombre
@@ -52,7 +53,8 @@ public class GestionarComicPOJO {
 	
 	/**
 	 * 
-	 * Metodo encargado de agregar a la lista de comicsDTO un comicDTO
+	 * Metodo que agrega a la lista de comicsDTO un comicDTO
+	 * @author Valentina
 	 * 
 	 * @param comicDTO
 	 */
@@ -65,7 +67,8 @@ public class GestionarComicPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de crear un comicDTO con atibutos por defecto
+	 * Metodo que crea un comicDTO con atibutos por defecto
+	 * @author Valentina
 	 *
 	 */
 	public void crearComicDTO() {
@@ -90,7 +93,8 @@ public class GestionarComicPOJO {
 
 	/**
 	 * 
-	 * Metodo encargado de modificar un comicDTO en la lista
+	 * Metodo que modifica un comicDTO en la lista
+	 * @author Valentina
 	 * 
 	 * @param id
 	 * @param nombre
@@ -108,8 +112,9 @@ public class GestionarComicPOJO {
 	
 	/**
 	 * 
-	 * Metodo encargado de eliminar un comicDTO en la lista de ComicDTO
-	 *  
+	 * Metodo que elimina un comicDTO en la lista de comicsDTO
+	 * @author Valentina
+	 * 
 	 * @param id
 	 */
 	public void eliminarComicDTO(String id) {
@@ -125,7 +130,7 @@ public class GestionarComicPOJO {
 		}
 	}
 	/**
-	 * Metodo encargado de retornar el valor del atributo listaComics
+	 * Metodo que retorna el valor del atributo listaComics
 	 * 
 	 * @return El listaComics asociado a la clase
 	 */
@@ -134,9 +139,9 @@ public class GestionarComicPOJO {
 	}
 
 	/**
-	 * Metodo encargado de modificar el valor del atributo listaComics
+	 * Metodo que modifica el valor del atributo listaComics
 	 * 
-	 * @param listaComics El nuevo listaComics a modificar.
+	 * @param listaComics nuevo listaComics a modificar.
 	 */
 	public void setListaComics(List<ComicDTO> listaComics) {
 		this.listaComics = listaComics;
