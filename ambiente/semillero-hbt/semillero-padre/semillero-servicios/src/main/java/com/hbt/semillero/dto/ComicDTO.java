@@ -9,6 +9,7 @@ import com.hbt.semillero.entidades.EstadoEnum;
 import com.hbt.semillero.entidades.TematicaEnum;
 
 
+
 /**
  * 
  * <b>Descripción:<b> Clase que determina
@@ -32,7 +33,7 @@ public class ComicDTO implements Serializable{
 
 	private String editorial;
 	
-	private TematicaEnum tematica;
+	private TematicaEnum tematicaEnum;
 
 	private String coleccion;
 
@@ -57,11 +58,6 @@ public class ComicDTO implements Serializable{
 	private EstadoEnum estado;
 	
 	private Long cantidad;
-	
-	
-	
-	
-	
 
 	/**
 	 * Constructor de la clase.
@@ -78,6 +74,7 @@ public class ComicDTO implements Serializable{
 	 * @param estado
 	 * @param cantidad
 	 */
+	
 	public ComicDTO(String id, String nombre, String editorial, TematicaEnum tematica, String coleccion,
 			Integer numeroPaginas, BigDecimal precio, String autores, Boolean color, LocalDate fechaVenta,
 			EstadoEnum estado, Long cantidad) {
@@ -85,7 +82,7 @@ public class ComicDTO implements Serializable{
 		this.id = id;
 		this.nombre = nombre;
 		this.editorial = editorial;
-		this.tematica = tematica;
+		this.tematicaEnum = tematica;
 		this.coleccion = coleccion;
 		this.numeroPaginas = numeroPaginas;
 		this.precio = precio;
@@ -163,16 +160,16 @@ public class ComicDTO implements Serializable{
 	 * Metodo encargado de retornar el valor del atributo tematica
 	 * @return El tematica asociado a la clase
 	 */
-	public TematicaEnum getTematicaEnum() {
-		return tematica;
+	public TematicaEnum getTematica() {
+		return tematicaEnum;
 	}
 
 	/**
 	 * Metodo encargado de modificar el valor del atributo tematica
 	 * @param tematica El nuevo tematica a modificar.
 	 */
-	public void setTematicaEnum(TematicaEnum tematica) {
-		this.tematica = tematica;
+	public void setTematica(TematicaEnum tematica) {
+		this.tematicaEnum = tematica;
 	}
 
 	/**
@@ -275,7 +272,7 @@ public class ComicDTO implements Serializable{
 	 * Metodo encargado de retornar el valor del atributo estado
 	 * @return El estado asociado a la clase
 	 */
-	public EstadoEnum getEstadoEnum() {
+	public EstadoEnum getEstado() {
 		return estado;
 	}
 
@@ -283,7 +280,7 @@ public class ComicDTO implements Serializable{
 	 * Metodo encargado de modificar el valor del atributo estado
 	 * @param estado El nuevo estado a modificar.
 	 */
-	public void setEstadoEnum(EstadoEnum estado) {
+	public void setEstado(EstadoEnum estado) {
 		this.estado = estado;
 	}
 
@@ -302,5 +299,6 @@ public class ComicDTO implements Serializable{
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
+
 
 }

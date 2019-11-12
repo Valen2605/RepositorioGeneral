@@ -36,6 +36,8 @@ export class EjercicioComicComponent implements OnInit{
         this.fechaVentaGlobalPublic=new Date(10-10-2019);
         this.estadoVentaGlobalPublic="activo";  
         
-              
+            
         
+}
+
 }

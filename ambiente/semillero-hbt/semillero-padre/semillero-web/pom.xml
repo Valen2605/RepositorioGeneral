@@ -17,8 +17,17 @@
 	<properties>
 		<workingDirectory.project>${project.basedir}/src/main/angular</workingDirectory.project>
 	</properties>
-
-
+    <!--Estas líneas es para que no compile el proyecto angular -->
+    <profiles>
+        <profile>
+            <id>compile-angular</id>
+            <activation>
+                <property>
+                    <name>skipAngular</name>
+                    <value>!true</value>
+                </property>
+            </activation>
+     <!-- Aquí terminan las líneas para no compilar-->
 	<build>
 		<plugins>
 			<plugin>
@@ -78,5 +87,7 @@
 			</plugin>
 		</plugins>
 	</build>
-
+  </profile>
+ </profiles> <!-- </profile> </profiles> hacen parte de las etiquetas de arriba de las lineas para que no se ejecuta angular. si sellegara a borrar lo de no compilarse angular, estas etiquetas también se deben de borrar. -->
+        
 </project>

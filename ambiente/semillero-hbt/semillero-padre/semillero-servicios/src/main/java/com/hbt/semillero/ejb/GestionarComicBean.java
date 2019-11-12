@@ -22,8 +22,7 @@ import com.hbt.semillero.entidades.Comic;
 public class GestionarComicBean  implements IGestionarComicLocal{
 	@PersistenceContext
     private EntityManager em;
-	
-	
+		
 	
 	/**
 	 * Metodo que se encarga de agregar un comic a la base de datos
@@ -35,7 +34,11 @@ public class GestionarComicBean  implements IGestionarComicLocal{
 	     em.persist(comic);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	/** Método que permite modificar comic de la base de datos
+	 * 
+	 * @param comicModificar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)	
     public void modificarComic(ComicDTO comicModificar) {
 		Comic comic = new Comic();
 	    //comic.setId(comicModificar.getId());
@@ -47,20 +50,26 @@ public class GestionarComicBean  implements IGestionarComicLocal{
 		em.merge(comicModificar);
 	}
 	
+	/**
+	 * Método que permite consultar un Comic en la base de datos
+	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public ComicDTO consultarComic(String id) {
-		Comic comic = em.find(Comic.class, id);
+		Comic comic = em.find(Comic.class, Long.parseLong(id));
 		ComicDTO comicDTO = convertirComicToComicDTO(comic);
 		return comicDTO;
 		
 	}
 	
+	/**
+	 * Método que permite consultar todos los comics de la base de datos
+	 * @return
+	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<ComicDTO> consultarComic() {
-		em.createNativeQuery("SELECT C FROM COMIC").getResultList();
+		em.createNativeQuery("SELECT C FROM COMIC").getResultList(); // C es la entidad
 		List<Comic> resultados = (List<Comic>) em.createQuery("select c from Comic").getResultList();
-		return null;
-		
+		return null;		
 	}
 
 	/** 
@@ -69,17 +78,18 @@ public class GestionarComicBean  implements IGestionarComicLocal{
 	 */
 	@Override
 	//@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	//  TODO hacer que lista de resultados sea nula
-	public void modificarComic(Long id, String nombre, ComicDTO comicNuevo) {
+	//TODO cual es el resultado de llamar a modificarComic	
+	public void modificarComic(Long id, String nombre, ComicDTO comicNuevo) { // id se pone como Long para poder realizar la persistencia
 		Comic comicModificar;
 		if (comicNuevo==null) {
-			comicModificar = em.find(Comic.class, id);
+			comicModificar = em.find(Comic.class, id); // Manejar la entidad. Si esta menjada el entity manager la puyede manejar.
 		}else {
 			comicModificar = convertirComicDTOToComic(comicNuevo);
 		}
 		//TODO validar si comicmodificar llego con datos 
 		comicModificar.setNombre(nombre);
-		em.merge(comicModificar);
+		em.merge(comicModificar); /* cuando se utiliza el merge sino encuentra el id, lo que hace es un persist y si
+		                             lo encuentra hace el update */
 	}
 
 	/** 
@@ -104,6 +114,7 @@ public class GestionarComicBean  implements IGestionarComicLocal{
 	 */
 	@Override
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+//  TODO hacer que lista de resultados sea nula
 	public List<ComicDTO> consultarComics() {
 		List<ComicDTO> resultadosComicDTO = new ArrayList<ComicDTO>();
 		List<Comic> resultados = em.createQuery("select c from Comic c").getResultList();
@@ -129,14 +140,14 @@ public class GestionarComicBean  implements IGestionarComicLocal{
         }
         comic.setNombre(comicDTO.getNombre());
         comic.setEditorial(comicDTO.getEditorial());
-        comic.setTematicaEnum(comicDTO.getTematicaEnum());
+        comic.setTematicaEnum(comicDTO.getTematica());
         comic.setColeccion(comicDTO.getColeccion());
         comic.setNumeroPaginas(comicDTO.getNumeroPaginas());
         comic.setPrecio(comicDTO.getPrecio());
         comic.setAutores(comicDTO.getAutores());
         comic.setColor(comicDTO.getColor());
         comic.setFechaVenta(comicDTO.getFechaVenta());
-        comic.setEstadoEnum(comicDTO.getEstadoEnum());
+        comic.setEstadoEnum(comicDTO.getEstado());
         comic.setCantidad(comicDTO.getCantidad());
         return comic;
 	}
@@ -155,14 +166,14 @@ public class GestionarComicBean  implements IGestionarComicLocal{
         }
         comicDTO.setNombre(comic.getNombre());
         comicDTO.setEditorial(comic.getEditorial());
-        comicDTO.setTematicaEnum(comic.getTematicaEnum());
+        comicDTO.setTematica(comic.getTematicaEnum());
         comicDTO.setColeccion(comic.getColeccion());
         comicDTO.setNumeroPaginas(comic.getNumeroPaginas());
         comicDTO.setPrecio(comic.getPrecio());
         comicDTO.setAutores(comic.getAutores());
         comicDTO.setColor(comic.getColor());
         comicDTO.setFechaVenta(comic.getFechaVenta());
-        comicDTO.setEstadoEnum(comic.getEstadoEnum());
+        comicDTO.setEstado(comic.getEstadoEnum());
         comicDTO.setCantidad(comic.getCantidad());
         return comicDTO;
     }

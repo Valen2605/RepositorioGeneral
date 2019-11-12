@@ -21,16 +21,16 @@ import com.hbt.semillero.ejb.IGestionarComicLocal;
 	@EJB
 	private IGestionarComicLocal gestionarComicEJB;
 	
-	@GET
-    @Path("/saludo")
-    @Produces
+	@GET //Tipo de envío
+    @Path("/saludo") // ruta de acceso pública
+    @Produces // Define el tipo de recurso que se va a producir
 	public String primerRest() {
 		return "Hola Mundo";
 	}
 	
 	@GET
     @Path("/consultarComic")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)// El retorno de la información es de tipo json
 	public ComicDTO consultarComic(@QueryParam("idComic") Long idComic) {
 		if(idComic!=null) {
 			return gestionarComicEJB.consultarComic(idComic.toString());
