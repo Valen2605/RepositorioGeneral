@@ -3,7 +3,7 @@ import { ComicDTO } from '../../dto/comic.dto';
 
 /**
  * @description La clase CrearPersonaComponent permite crear personas
- * @author Valentina Santa Muñoz
+ * @author Diego Fernando Alvarez Silva <dalvarez@heinsohn.com.co>
  */
 @Component({
     selector: 'crear-persona',
@@ -88,7 +88,9 @@ export class CrearPersonaComponent implements OnInit{
         }
 
         console.log(1 == 1);
-        
+//        console.log("1" == 1);
+        console.log(1 === 1);
+  //      console.log("1" === 1);
 
         this.comicDTO = new ComicDTO();
         this.comicDTO.autores = "Pablito";
