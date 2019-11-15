@@ -21,15 +21,15 @@ export class ConsultarComicComponent implements OnInit {
      */
     public consultarComicForm : FormGroup;
 
-    /**
+     /**
      * Atributo que contendra la informacion del comic
      */
     public comic: ComicDTO;
 
     /**
      * Atributo que contendra la lista de comics creados
-     */
-    public listaComics : Array<ComicDTO>;
+     */    
+   public data: any;
 
     public idComic : number = 0;
 
@@ -61,29 +61,30 @@ export class ConsultarComicComponent implements OnInit {
      * @description Evento angular que se ejecuta al invocar el componente
      * @author Valentina Santa
      */
-    ngOnInit(): void {
-           
-        let data = this.activatedRoute.snapshot.params;    
-        this.adicionarCampos(data);
+        ngOnInit(): void {
         
+        let comic = this.activatedRoute.snapshot.params;    
+        this.adicionarCampos();
+
     }
     /**
      * Metodo que permite adicionar valores a la lista
-     * @param comic 
+     * @param comic
      * @author Valentina Santa
      */
 
-    public adicionarCampos(comic:any):void{
+    public adicionarCampos():void{
 
-        this.consultarComicForm.controls.nombre.setValue(comic.nombre);
-        this.consultarComicForm.controls.editorial.setValue(comic.editorial);
-        this.consultarComicForm.controls.tematica.setValue(comic.tematica);
-        this.consultarComicForm.controls.coleccion.setValue(comic.coleccion);
-        this.consultarComicForm.controls.numeroPaginas.setValue(comic.numeroPaginas);
-        this.consultarComicForm.controls.precio.setValue(comic.precio);
-        this.consultarComicForm.controls.autores.setValue(comic.autores);
-        this.consultarComicForm.controls.color.setValue(comic.color);
-
+        this.consultarComicForm.controls.nombre.setValue(this.data.nombre);
+        this.consultarComicForm.controls.editorial.setValue(this.data.editorial);
+        this.consultarComicForm.controls.tematica.setValue(this.data.tematica);
+        this.consultarComicForm.controls.coleccion.setValue(this.data.coleccion);
+        this.consultarComicForm.controls.numeroPaginas.setValue(this.data.numeroPaginas);
+        this.consultarComicForm.controls.precio.setValue(this.data.precio);
+        this.consultarComicForm.controls.autores.setValue(this.data.autores);
+        this.consultarComicForm.controls.color.setValue(this.data.color);
+         
+        
     }
 
     
