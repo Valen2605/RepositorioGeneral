@@ -47,7 +47,7 @@ public class GestionarComicPOJOTest {
 		
 
 		comicDTO = new ComicDTO(); /* Se utiliza de esta manera para poder limpiar los datos que queremos 
-		                              y no envíe un datos anterior en caso de que enviemos uno vacío. */
+		                              y no envíe un dato anterior en caso de que enviemos uno vacío. */
 
 		comicDTO.setId("100");
 		comicDTO.setNombre("Dragon ball Yamcha");
@@ -90,10 +90,20 @@ public class GestionarComicPOJOTest {
 	 * Método que valida que se modifica Comic
 	 */
 	  @Test
-	  public void modificarComicDTOTest() {
-	  
-	     //TODO aun no se ha completado el método. Terminar
+	  public void modificarComicDTOTest() {	
 		  
+		  GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();
+		  
+	  		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 3);
+	  		
+		  		String nombreNuevo = "Captain America Corps 1-5 Colombia";
+		  		
+                
+		  		gestionarComicPOJO.modificarComicDTO("2",nombreNuevo);
+		  		
+		  		ComicDTO comicModificado = gestionarComicPOJO.getListaComics().get(1);
+	  		Assert.assertEquals(comicModificado.getNombre(), nombreNuevo);
+		    
 		  
 	    }
 	  
@@ -102,8 +112,12 @@ public class GestionarComicPOJOTest {
 		 */
 		  @Test
 		  public void eliminarComicDTOTest() {
+			  
+			  GestionarComicPOJO gestionarComicPOJO = new GestionarComicPOJO();		  
+   	  		   
+  	  		  gestionarComicPOJO.eliminarComicDTO("100");
 		  
-		     //TODO aun no se ha completado el método. Terminar
+		  		Assert.assertTrue(gestionarComicPOJO.getListaComics().size() == 2);	
 			  
 			  
 		    }
