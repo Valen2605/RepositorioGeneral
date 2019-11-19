@@ -60,21 +60,11 @@ public class EjerciciosPOJO {
 	   
 	   
 	   
-   }
+   } 
  
  
+
  
- /**
-   * Metodo para organizar los numeros
-    * @author Valentina
-  */
-   
-   public static int ejercicio9(){
-	   
-	   
-	   
-	   
-   }
  
 
 }
