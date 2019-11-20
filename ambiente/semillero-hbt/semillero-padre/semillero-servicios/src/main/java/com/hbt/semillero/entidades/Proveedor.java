@@ -49,8 +49,8 @@ public Proveedor(){
  * @return El id asociado a la clase
  */
 @Id
-@SequenceGenerator(allocationSize = 1, name = "TC_PROVEEDOR_SPID_GENERATOR", sequenceName = "SEQ_TC_PROVEEDOR")
-@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TC_PROVEEDOR_SPID_GENERATOR")
+@SequenceGenerator(allocationSize = 1, name = "PROVEEDOR_SPID_GENERATOR", sequenceName = "SEQ_PROVEEDOR")
+@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROVEEDOR_SPID_GENERATOR")
 @Column(name = "SPID")
 public Long getId() {
 	return id;
@@ -144,7 +144,7 @@ public BigDecimal getMontoCreadito() {
 /**
  * Metodo encargado de modificar monto credito. 
  * 
- * @param monto credito.
+ * @param montoCredito.
  */
 public void setMontoCradito(BigDecimal montoCredito) {
 	this.montoCredito = montoCredito;

@@ -22,8 +22,8 @@ import com.hbt.semillero.entidades.Proveedor;
  * @author Valentina
  * @version 
  */
-//TODO comentar para que sirve el STateless
-@Stateless
+
+@Stateless // Clase sin estado, no tiene atributos,solo metodos
 public class GestionarProveedorBean implements IGestionarProveedorLocal {
 	
 	@PersistenceContext
